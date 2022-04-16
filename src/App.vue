@@ -1,15 +1,15 @@
 <template>
   <div id="app">
-      <b-card>hello wolrd!</b-card>
+    <Portfolio/>
   </div>
 </template>
 
 <script>
-
+import Portfolio from "@/components/Portfolio.vue"
 export default {
-  name: "App"
+  name: "App",
+  components: {Portfolio}
 };
 </script>
 
-<style>
-</style>
+<style></style>
