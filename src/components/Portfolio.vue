@@ -10,43 +10,59 @@
       img-height="480"
       style="text-shadow: 1px 1px 2px #333;"
       @sliding-start="onSlideStart"
-      @sliding-end="onSlideEnd"
-    >
-      <!-- Text slides with image -->
-      <b-carousel-slide
-        caption="First slide"
-        text="Nulla vitae elit libero, a pharetra augue mollis interdum."
-        img-src="https://picsum.photos/1024/480/?image=52"
-      >
-        <b-card bg-variant="primary">test</b-card>
-      </b-carousel-slide>
+      @sliding-end="onSlideEnd">
 
-      <!-- Slides with custom text -->
-      <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=54">
-        <h1>Hello world!</h1>
-      </b-carousel-slide>
+      <template v-for="(project,index) in items">
 
+        <b-carousel-slide
+          :key="index"
+          caption="First slide"
+          text="Nulla vitae elit libero, a pharetra augue mollis interdum."
+          img-src="https://picsum.photos/1024/480/?image=52">
+          <Project :project="project"/>
+        </b-carousel-slide>
+        
+      </template>
 
     </b-carousel>
   </div>
 </template>
 
 <script>
+import Project from "@/components/Project.vue"
 export default {
   name: "Portfolio",
+
+  components: {Project},
+
   data(){
       return {
-          fields: [
-              {key: "name", label: "Name", sortable: true},
-              {key: "age", label: "Age", sortable: true},
-          ],
           items: [
-              {"name": "Jareed", "age":22},
-              {"name": "Jablue", "age":25},
-              {"name": "Tesst", "age":22},
-              {"name": "Fruit Punch", "age":18},
-              {"name": "Linux User", "age":27},
-          ]
+            {
+              title: "Flappy Bird", 
+              description: "Implemented a flappy bird game clone using python/pygame with sqlite3...",
+              img: "image1",
+              video: "video1"  
+            },
+            {
+              title: "Memory Game", 
+              description: "impelemented a memory game usign vue",
+              img: "image2",
+              video: "video2"  
+            },
+            {
+              title: "Food Ordering System", 
+              description: "Implemented a flappy bird game clone using python/pygame with sqlite3...",
+              img: "image3",
+              video: "video3"  
+            },
+          ],
+          // project: {
+          //   title: "Flappy Bird", 
+          //   description: "Implemented a flappy bird game clone using python/pygame with sqlite3...",
+          //   img: "image1",
+          //   video: "video1"  
+          // },
       }
   }
 };
